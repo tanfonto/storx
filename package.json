@@ -18,7 +18,8 @@
     "lint": "tslint -p tsconfig.json",
     "test:dev": "tsc && nyc ava --tap | tap-diff",
     "test": "tsc && nyc ava && nyc report --reporter=text-lcov | coveralls",
-    "watch": "ava --verbose --watch"
+    "watch": "ava --verbose --watch",
+    "build": "tsc -p tsconfig.app.json"
   },
   "repository": {
     "url": "https://github.com/whapky/storx"

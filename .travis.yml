@@ -8,12 +8,14 @@ cache:
     - "node_modules"
 jobs:
   include:
-    - install
     - stage: lint
       script: npm run lint
     - stage: test
       script: npm test
+    - stage: build
+      script: npm run build
 stages:
   - lint
   - test
+  - build
 after_success: "npm run coveralls"

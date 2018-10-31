@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "removeComments": true,
+    "sourceMap": false,
+    "target": "es6",
+    "moduleResolution": "node"
+  }
+}
