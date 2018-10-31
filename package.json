@@ -1,0 +1,23 @@
+{
+  "name": "storx",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "tsc && nyc ava --verbose",
+    "watch": "ava --verbose --watch"
+  },
+  "author": "Whapky",
+  "license": "ISC",
+  "dependencies": {
+    "@types/ramda": "^0.25.38",
+    "ava": "^0.25.0",
+    "ava-ts": "^0.25.2",
+    "nyc": "^13.1.0",
+    "ramda": "^0.25.0",
+    "ramda-adjunct": "^2.10.0",
+    "rxjs": "^6.3.3",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.1"
+  }
+}
