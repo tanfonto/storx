@@ -1,11 +1,14 @@
 language: node_js
 node_js:
  - "node"
+install:
+ - npm ci
 cache:
   directories:
     - "node_modules"
 jobs:
   include:
+    - install
     - stage: lint
       script: npm run lint
     - stage: test
