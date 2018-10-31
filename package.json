@@ -1,7 +1,18 @@
 {
   "name": "storx",
   "version": "0.0.1",
-  "description": "",
+  "description": "Dead simple state management",
+  "keywords": [
+    "state management",
+    "store",
+    "reactive",
+    "observable",
+    "rxjs",
+    "tiny",
+    "simple",
+    "typescript",
+    "frp"
+  ],
   "main": "index.ts",
   "scripts": {
     "lint": "tslint -p tsconfig.json",
@@ -9,8 +20,11 @@
     "test": "tsc && nyc ava && nyc report --reporter=text-lcov | coveralls",
     "watch": "ava --verbose --watch"
   },
+  "repository": {
+    "url": "https://github.com/whapky/storx"
+  },
   "author": "Whapky",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/ramda": "^0.25.38",
     "ava": "^0.25.0",
