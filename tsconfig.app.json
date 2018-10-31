@@ -5,6 +5,9 @@
     "removeComments": true,
     "sourceMap": false,
     "target": "es6",
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+  },
+  "exclude": [
+    "**/*.test.ts"
+  ]
 }
