@@ -1,21 +1,28 @@
 language: node_js
 node_js:
- - "node"
+- node
 install:
- - npm ci
+- npm ci
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 jobs:
   include:
-    - stage: lint
-      script: npm run lint
-    - stage: test
-      script: npm test
-    - stage: build
-      script: npm run build
+  - stage: lint
+    script: npm run lint
+  - stage: test
+    script: npm test
+  - stage: build
+    script: npm run build
 stages:
-  - lint
-  - test
-  - build
-after_success: "npm run coveralls"
+- lint
+- test
+- build
+deploy:
+  provider: npm
+  email: tanfonto@pm.me
+  api_key:
+    secure: cKN4k6MBcCWeZgRVPfH/65Bkmyh37Ld99w01lQnWYyQTfLwMdaReA5hvX8/8gM9v9++vdW6+krznwxV2C9HJ0UU6DOFq9b0Od40F5Ub7T2ftIYqPBAqZplO54v6V+rCcbNcGxRPh2WsTYaIuF+FebsbYMEgKLUTr+Mo7MO3yqEeWFcw/Wser70zzwuOorHIBRSPCiW7CB16sGLryTbBPuqyyz3FvYSMJCygd6SCuHVb9uGibd8fpgAbJX0ZcR3LXQVT9PEzfQ2PVTVpORNFV8U+GqfyzJBOJOsWNI8FCJkV9XTelws8FantPdnMY80F6s7xVIiim2HiBFBqbkc6UdqtRPTWy8XE/MQrGJ3W6hiSiKLwEZNNhqq+ezhuwdvg5SGkvDQPVj5WOcQfszPT2q+uL7hg7HX8kkiH/EcGhLOu+uG1Gm96zh6N9vZGo7oqgI2NbOVuK8JMqhhnAYxmTZoizgeoneinZuu632UXUITFNWFLp0gzT9KwczNJ/vMgzqZhWxzjRJMhjadan3b3WmYH5krhJ5q9/vDQ7IX4QHz5LVz9v9fr1iSUijdD6LT2pQ+Dk0zwEvyYAMoiBCR7dl4BX7T91bwe43BrcsVwiQGhzDu1fynjJBfUbuhec2jAzbJ8oNAvqskyl0epcF1gMUa+V3iws7LlurydubG+L6ow=
+  on:
+    tags: true
+    repo: tanfonto/storx

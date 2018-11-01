@@ -1,5 +1,5 @@
 import { GenericCallbackTestContext, test } from 'ava-ts';
-import { map } from 'rxjs/operators';
+import { map, skip } from 'rxjs/operators';
 import { Store } from '.';
 
 type Ctx<T = any> = GenericCallbackTestContext<T>;
@@ -41,7 +41,24 @@ test.cb('primitive state gets updated according to the rules specified by a free
 test.cb('complex state gets updated according to the rules specified by a free reducer', (t) => {
   const store = Store({ value: 42 }, {});
 
-  willAssert(t, store, { value: 50 });
+  willAssert(t, store,  { value: 50 });
 
   store(({ value }: IBoxed) => ({ value: value + 8 }));
+});
+
+test.cb('a n > 1 chain of changes produces valid output', (t) => {
+  const store = Store(
+    { value: 42 },
+    { inc: ({ value: v1 }: IBoxed, { value: v2 }: IBoxed ) => {
+      return { value: v1 + v2 };
+  }});
+
+  store().pipe(
+    skip(2),
+    map((s) => t.deepEqual(s, { value: 70 })),
+  ).subscribe(t.end);
+
+  store(({ value }: IBoxed) => ({ value: value + 8 }));
+  store({ action: 'inc', payload: { value: 5 } });
+  store(({ value }: IBoxed) => ({ value: value + 15 }));
 });
