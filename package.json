@@ -1,6 +1,6 @@
 {
   "name": "@tanfonto/storx",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Dead simple state management",
   "keywords": [
     "state management",
@@ -14,13 +14,14 @@
     "simple",
     "typescript"
   ],
-  "main": "index.ts",
+  "main": "dist/index.ts",
   "scripts": {
     "lint": "tslint -p tsconfig.json",
     "test:dev": "tsc && nyc ava --tap | tap-diff",
     "test": "tsc && nyc ava && nyc report --reporter=text-lcov | coveralls",
     "watch": "ava --verbose --watch",
-    "build": "tsc -p tsconfig.app.json"
+    "build": "tsc -p tsconfig.app.json",
+    "prepublish": "npm run build  "
   },
   "repository": {
     "url": "https://github.com/tanfonto/storx"
@@ -40,5 +41,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
+  }
 }

@@ -13,7 +13,7 @@
     "allowJs": false,
     "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "./dist/@types",
+    "declarationDir": "./@types",
     "removeComments": true,
     "downlevelIteration": true,
     "strict": true,
@@ -30,5 +30,5 @@
     "listEmittedFiles": true,
     "pretty": true,
     "diagnostics": true
-  },
+  }
 }
