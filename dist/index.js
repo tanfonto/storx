@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const rxjs_1 = require("rxjs");
-const operators_1 = require("rxjs/operators");
-const types_1 = require("./types");
+var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
+var types_1 = require("./types");
 function Store(initialState, bound) {
-    const states = new rxjs_1.Subject();
-    const stateChanged = states.pipe(operators_1.scan((state, fn) => fn(state), initialState), operators_1.distinctUntilChanged());
-    return (patch) => {
+    var states = new rxjs_1.Subject();
+    var stateChanged = states.pipe(operators_1.scan(function (state, fn) { return fn(state); }, initialState), operators_1.distinctUntilChanged());
+    return function (patch) {
         if (patch) {
             states.next(types_1.isFree(patch)
                 ? patch

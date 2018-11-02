@@ -1,6 +1,6 @@
 import { GenericCallbackTestContext, test } from 'ava-ts';
 import { map, skip } from 'rxjs/operators';
-import { Store } from '.';
+import { Store } from './index';
 
 type Ctx<T = any> = GenericCallbackTestContext<T>;
 interface IBoxed<T = number> { value: T; }

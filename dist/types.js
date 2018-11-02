@@ -4,4 +4,7 @@ function isFree(patch) {
     return typeof patch === 'function';
 }
 exports.isFree = isFree;
-exports.asFree = (api, { action, payload }) => (x) => api[action](x, payload);
+exports.asFree = function (api, _a) {
+    var action = _a.action, payload = _a.payload;
+    return function (x) { return api[action](x, payload); };
+};

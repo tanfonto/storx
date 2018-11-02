@@ -1,5 +1,5 @@
 export {
   failFast: true,
-  compileEnhancements: false,
+  compileEnhancements: true,
   cache: false,
 }
