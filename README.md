@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/tanfonto/storx.svg?branch=master)](https://travis-ci.org/tanfonto/storx)
 [![Coverage Status](https://coveralls.io/repos/github/tanfonto/storx/badge.svg?branch=master)](https://coveralls.io/github/tanfonto/storx?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/tanfonto/storx/badge)](https://www.codefactor.io/repository/github/tanfonto/storx)
+[![dependencies Status](https://david-dm.org/tanfonto/storx/status.svg)](https://david-dm.org/tanfonto/storx)
 
 ## | storx |
 Dead simple state management built with [RxJS](https://github.com/ReactiveX/RxJS) & [TypeScript](https://github.com/Microsoft/TypeScript);
