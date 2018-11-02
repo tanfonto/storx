@@ -1,6 +1,6 @@
 {
   "name": "@tanfonto/storx",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Dead simple state management",
   "keywords": [
     "state management",
