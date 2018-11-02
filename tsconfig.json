@@ -24,5 +24,9 @@
     "listEmittedFiles": true,
     "pretty": true,
     "diagnostics": true
-  }
+  },
+  "exclude": [
+    "dist",
+    "**/*.test.ts"
+  ]
 }
