@@ -3,14 +3,14 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/tanfonto/storx/badge)](https://www.codefactor.io/repository/github/tanfonto/storx)
 
 ## | storx |
-Dead simple state management built with [RxJS](https://github.com/ReactiveX/RxJS)
+Dead simple state management built with [RxJS](https://github.com/ReactiveX/RxJS) & [TypeScript](https://github.com/Microsoft/TypeScript);
 
 #### about
-* 100% functional TypeScript codebase;
-* small and focused;
-* dependency-free (with an exception of RxJS, obviously);
-* dead simple api (see usage & tests);
-* RxJS compatible, meaning you can plug it into your pipeline right away;
+* functional, statically typed codebase;
+* small and concise;
+* dependency-free (minus RxJS, obviously);
+* dead simple api (see 'usage' below and tests);
+* RxJS compatible, meaning you can plug it into your streams right away;
 
 #### usage
 
