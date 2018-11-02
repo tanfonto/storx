@@ -3,17 +3,12 @@
     "target": "es5",
     "module": "commonjs",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "es6",
-      "es2015",
-      "es2015.iterable",
-      "es2015.generator"
+      "es6"
     ],
     "allowJs": false,
     "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "./@types",
+    "declarationDir": "./dist/@types",
     "removeComments": true,
     "downlevelIteration": true,
     "strict": true,
@@ -26,9 +21,12 @@
     "noUnusedParameters": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
     "listEmittedFiles": true,
     "pretty": true,
     "diagnostics": true
-  }
+  },
+  "exclude": [
+    "dist",
+    "**/*.test.ts"
+  ]
 }

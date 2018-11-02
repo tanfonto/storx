@@ -15,6 +15,8 @@ Dead simple state management built with [RxJS](https://github.com/ReactiveX/RxJS
 #### usage
 
 ```typescript
+  import { Store } from '@tanfonto/storx';
+
   type No = { value: number };
 
   const store = Store(
