@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.org/tanfonto/storx.svg?branch=master)](https://travis-ci.org/tanfonto/storx)
 [![Coverage Status](https://coveralls.io/repos/github/tanfonto/storx/badge.svg?branch=master)](https://coveralls.io/github/tanfonto/storx?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/tanfonto/storx/badge)](https://www.codefactor.io/repository/github/tanfonto/storx)
+[![dependencies Status](https://david-dm.org/tanfonto/storx/status.svg)](https://david-dm.org/tanfonto/storx)
+[![devDependencies Status](https://david-dm.org/tanfonto/storx/dev-status.svg)](https://david-dm.org/tanfonto/storx?type=dev)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## | storx |
 Dead simple state management built with [RxJS](https://github.com/ReactiveX/RxJS) & [TypeScript](https://github.com/Microsoft/TypeScript);
@@ -11,6 +14,12 @@ Dead simple state management built with [RxJS](https://github.com/ReactiveX/RxJS
 * dependency-free (minus RxJS, obviously);
 * dead simple api (see 'usage' below and tests);
 * RxJS compatible, meaning you can plug it into your streams right away;
+
+#### installation
+
+```
+npm i @tanfonto/storx
+```
 
 #### usage
 
