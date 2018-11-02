@@ -1,6 +1,6 @@
 {
   "name": "@tanfonto/storx",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Dead simple state management",
   "keywords": [
     "state management",
@@ -27,9 +27,6 @@
   },
   "author": "tanfonto",
   "license": "MIT",
-  "dependencies": {
-    "rxjs": "^6.3.3"
-  },
   "devDependencies": {
     "ava": "^0.25.0",
     "ava-ts": "^0.25.2",
@@ -39,6 +36,9 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.1.1"
+  },
+  "peerDependencies": {
+    "rxjs": "^6.3.3"
   },
   "publishConfig": {
     "access": "public"
