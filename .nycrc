@@ -5,7 +5,8 @@
   "exclude": [
     "**/*.d.ts",
     "**/*.test.ts",
-    "types.ts"
+    "types.ts",
+    "**/index.ts"
   ],
   "extension": [
     ".ts"
