@@ -10,7 +10,8 @@ function macro<E>(
   [ pred, typeName ]: [(x: any) => boolean, string]
 ) {
   if (guard<E>(input, pred)) {
-    const _typeAssert: E = input;
+    // let typeAssert: E;
+    // typeAssert = input;
     t.deepEqual(typeof input, typeName);
   } else {
     t.fail();
@@ -34,5 +35,5 @@ test('object type is correctly inferred', macro, {}, [
 
 test('number type is correctly inferred', macro, 42, [
   type('number'),
-  'function'
+  'number'
 ]);

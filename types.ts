@@ -6,5 +6,6 @@ export interface Dictionary<T> {
   [key: number]: T;
 }
 export type Functor<T = any, R = T> = (state: T) => R;
-export type BiFunctor<T, P = T, R = T> = (state: T, patch: P) => R;
+export type BiFunctor<T, P = T, R = T> = (...args: [T, P]) => R;
 export type Effect<T> = (state: T) => void;
+export type MultiFunctor<T extends any[] = any[], R = any> = (...args: T) => R;

@@ -1,17 +1,22 @@
 import { test } from 'ava-ts';
 import { tap } from '../utils/tap';
 
-const noop = () => {};
-
 test('tap calls the side effect', t => {
-  let actual = false;
-  const eff = () => (actual = true);
-  tap(noop, eff);
-  t.true(actual);
+  t.context = false;
+  const eff = () => (t.context = true);
+  tap(x => x, eff)(42);
+  t.true(t.context);
 });
 
 test('tap returns the output of the function passed', t => {
-  const f = tap(x => x, noop);
+  const f = tap(x => x, () => {});
+  const actual = f(42);
+  t.deepEqual(actual, 42);
+});
+
+test('tap is idempotent, likely', t => {
+  const f = tap(x => x, () => {});
+  f(42), f(42), f(42);
   const actual = f(42);
   t.deepEqual(actual, 42);
 });

@@ -1,13 +1,10 @@
-export interface IMap<T> {
+export declare type Nilable<T> = T | undefined;
+export declare type Pair<T0 = any, T1 = T0> = [T0, T1];
+export declare type Entry<T0 = any, T1 = T0> = [keyof T0, T1];
+export interface Dictionary<T> {
     [key: string]: T;
+    [key: number]: T;
 }
-export declare type FreeReducer<T> = (state: T) => T;
-export declare type Reducer<T, P = T> = (state: T, patch: P) => T;
-export declare type Bindings<T, P> = IMap<Reducer<T, P>>;
-export interface IPatch<T, P, K = keyof T> {
-    action: K;
-    payload: P;
-}
-export declare type Patch<T, P> = IPatch<Bindings<T, P>, P> | FreeReducer<T>;
-export declare function isFree<T, P>(patch: Patch<T, P>): patch is FreeReducer<T>;
-export declare const asFree: <T, P>(api: IMap<Reducer<T, P>>, { action, payload }: IPatch<IMap<Reducer<T, P>>, P, string | number>) => (x: T) => T;
+export declare type Functor<T = any, R = T> = (state: T) => R;
+export declare type BiFunctor<T, P = T, R = T> = (state: T, patch: P) => R;
+export declare type Effect<T> = (state: T) => void;

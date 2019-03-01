@@ -18,7 +18,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "tslint -p tsconfig.json",
-    "test:dev": "nyc ava-ts --tap | tap-diff",
+    "test:dev": "nyc ava-ts --verbose --tap | tap-diff",
     "test": "nyc ava-ts && nyc report --reporter=text-lcov | coveralls",
     "watch": "ava-ts --verbose --watch",
     "build": "tsc"
