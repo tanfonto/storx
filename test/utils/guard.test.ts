@@ -7,12 +7,11 @@ const type = (name: string) => (x: any) => Object.is(typeof x, name);
 function macro<E>(
   t: GenericTestContext<Context<any>>,
   input: any,
-  [pred, typeName]: [(x: any) => boolean, string]
+  [ pred, typeName ]: [(x: any) => boolean, string]
 ) {
   if (guard<E>(input, pred)) {
-    // let typeAssert: E;
-    // typeAssert = input;
-    t.deepEqual(typeof input, typeName);
+    const typeAssert: E = input;
+    t.deepEqual(typeof input, typeName, `${typeAssert}`);
   } else {
     t.fail();
   }
