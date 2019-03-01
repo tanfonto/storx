@@ -1,4 +1,4 @@
-import { Functor } from '../types';
+import { Functor } from '../../types';
 
 export const compose = <T extends any[] = any[]>(...fns: Functor<T, any>[]) => (
   ...args: T

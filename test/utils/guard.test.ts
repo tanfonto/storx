@@ -1,13 +1,13 @@
 import { Context, GenericTestContext, test } from 'ava-ts';
-import { guard } from '../utils/guard';
-import { isFunction } from '../utils/type-assertions';
+import { guard } from '../../src/utils/guard';
+import { isFunction } from '../../src/utils/type-assertions';
 
 const type = (name: string) => (x: any) => Object.is(typeof x, name);
 
 function macro<E>(
   t: GenericTestContext<Context<any>>,
   input: any,
-  [ pred, typeName ]: [(x: any) => boolean, string]
+  [pred, typeName]: [(x: any) => boolean, string]
 ) {
   if (guard<E>(input, pred)) {
     // let typeAssert: E;

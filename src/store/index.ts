@@ -1,6 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, scan } from 'rxjs/operators';
-import { Effect, Functor, Nilable } from '../types';
+import { Effect, Functor, Nilable } from '../../types';
 import { guard, isArray, isFunction } from '../utils';
 import { ap } from './apply';
 import { ActionPayload, ActionsConfig } from './types';

@@ -1,5 +1,5 @@
 import { test } from 'ava-ts';
-import { isArray, isFunction, isNil } from '../utils/type-assertions';
+import { isArray, isFunction, isNil } from '../../src/utils/type-assertions';
 
 test('isNil is true if fed with null', t => {
   const actual = isNil(null);

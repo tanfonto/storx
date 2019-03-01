@@ -1,5 +1,5 @@
 import { test } from 'ava-ts';
-import { tap } from '../utils/tap';
+import { tap } from '../../src/utils/tap';
 
 test('tap calls the side effect', t => {
   t.context = false;
