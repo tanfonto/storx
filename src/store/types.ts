@@ -1,4 +1,4 @@
 import { Dictionary, BiFunctor, Entry } from '../../types';
 
-export type ActionsConfig<T, P> = Dictionary<BiFunctor<T, P>>;
-export type ActionPayload<T, P, C extends ActionsConfig<T, P>> = Entry<C, P>;
+export type Actions<T, P> = Dictionary<BiFunctor<T, P>>;
+export type Action<T, P> = Entry<Dictionary<BiFunctor<T, P>>, P>;
