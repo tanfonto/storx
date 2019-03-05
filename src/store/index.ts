@@ -1,29 +1,34 @@
-import { Subject } from 'rxjs';
-import { distinctUntilChanged, map, scan, tap } from 'rxjs/operators';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map, scan, shareReplay, tap } from 'rxjs/operators';
 import { Effect, Functor } from '../../types';
-import { isArray, isNil } from '../utils';
-import { If, when } from '../utils/conditional';
+import { isArray, isNil, when } from '../utils';
 import { ap } from './apply';
-import { Params, Setup } from './types';
-import { withEffects } from './with-effects';
+import { doEffects } from './do-effects';
+import { ActionDetails, Config } from './types';
 
-function bind<S, P>(setup: Setup<S, P>) {
-  return ([key, payload]: Params<S, P>) => (state: S) =>
-    setup[key](state, payload);
+function resolve<S, P>(config: Config<S, P>) {
+  return ([key, payload]: ActionDetails<S, P>) => (state: S) =>
+    config[key](state, payload);
 }
 
 export function Store<
   S,
   P = S,
-  Payload extends Params<S, P> | Functor<S> = Params<S, P> | Functor<S>
->(initialState: S, setup: Setup<S, P>, ...effects: Array<Effect<S>>) {
-  const state = new Subject<Payload>();
+  ActionParams = ActionDetails<S, P> | Functor<S>
+>(initialState: S, config: Config<S, P>, ...effects: Array<Effect<S>>) {
+  const state = new ReplaySubject<ActionParams>();
   const changes = state.pipe(
-    tap(withEffects(...effects)),
-    map(when(isArray, bind(setup))),
+    tap(doEffects(...effects)),
+    map(when(isArray, resolve(config))),
     scan<Functor<S>, S>(ap, initialState),
-    distinctUntilChanged()
+    shareReplay(1)
   );
 
-  return If(isNil, () => changes, (x: Payload) => state.next(x));
+  function store(): Observable<S>;
+  function store(arg: ActionParams): void;
+  function store(arg?: ActionParams) {
+    return isNil(arg) ? changes : state.next(arg);
+  }
+
+  return store;
 }

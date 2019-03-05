@@ -8,6 +8,6 @@
     "quotemark": [true, "single"],
     "interface-name": false,
     "arrow-parens": false,
-    "trailing-comma": true,
+    "trailing-comma": true
   }
 }

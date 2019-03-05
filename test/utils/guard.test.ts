@@ -1,6 +1,5 @@
 import { Context, GenericTestContext, test } from 'ava-ts';
 import { guard } from '../../src/utils/guard';
-import { isFunction } from '../../src/utils/type-assertions';
 
 const type = (name: string) => (x: any) => Object.is(typeof x, name);
 
@@ -18,12 +17,12 @@ function macro<E>(
 }
 
 test('function type is correctly inferred', macro, function() {}, [
-  isFunction,
+  type('function'),
   'function'
 ]);
 
 test('arrow function type is correctly inferred', macro, () => {}, [
-  isFunction,
+  type('function'),
   'function'
 ]);
 

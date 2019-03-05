@@ -1,5 +1,5 @@
 import { test } from 'ava-ts';
-import { isArray, isFunction, isNil } from '../../src/utils/type-assertions';
+import { isArray, isNil } from '../../src/utils/type-assertions';
 
 test('isNil is true if fed with null', t => {
   const actual = isNil(null);
@@ -18,26 +18,6 @@ test('isNil is false if fed with object', t => {
 
 test('isNil is false if fed with primitive', t => {
   const actual = isNil(42);
-  t.false(actual);
-});
-
-test('isFunction is true if fed with function', t => {
-  const actual = isFunction(function() {});
-  t.true(actual);
-});
-
-test('isFunction is true if fed with arrow function', t => {
-  const actual = isFunction(() => {});
-  t.true(actual);
-});
-
-test('isFunction is false if fed with object', t => {
-  const actual = isFunction({});
-  t.false(actual);
-});
-
-test('isFunction is false if fed with primitive', t => {
-  const actual = isFunction(42);
   t.false(actual);
 });
 

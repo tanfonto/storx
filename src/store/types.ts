@@ -1,4 +1,4 @@
-import { Dictionary, BiFunctor, Entry } from '../../types';
+import { BiFunctor, Dictionary, EntryOf } from '../../types';
 
-export type Setup<T, P> = Dictionary<BiFunctor<T, P>>;
-export type Params<T, P> = Entry<Dictionary<BiFunctor<T, P>>, P>;
+export type Config<T, U> = Dictionary<BiFunctor<T, U>>;
+export type ActionDetails<T, U> = EntryOf<Dictionary<BiFunctor<T, U>>, U>;
