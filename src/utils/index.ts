@@ -1,4 +1,3 @@
-export * from './guard';
 export * from './id';
 export * from './list';
 export * from './tap';

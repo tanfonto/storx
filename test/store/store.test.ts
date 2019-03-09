@@ -98,7 +98,7 @@ test.cb('effects are triggered per action rather than per subscriber', t => {
   let counter = 0;
   const store = testStore(0, () => counter++);
 
-  store().subscribe(() => t.log('subscribed before any actions were taken'));
+  store().subscribe(() => t.log('subscribed early'));
 
   store(['inc', { value: 42 }]);
   store(['inc', { value: 42 }]);
