@@ -82,7 +82,7 @@ storeWithEffects(['inc', { value: 42 }]);
 storeWithEffects().subscribe(console.log);
 storeWithEffects().subscribe(console.log);
 
-//output (note that side effect was only triggered once despite 2 subscribe registrations):
+// output (note that side effect was only triggered once despite 2 subscribe registrations):
 // [ 'inc', { value: 42 } ]
 // { value: 43 }
 // { value: 43 }
