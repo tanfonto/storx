@@ -2,11 +2,11 @@
 
 ### new features
 
-- On-dispatch side effects support;
+- (pre) state change side effects support;
 
 ### bug fixes
 
-- Removed distinctUntilChanged, can be composed by consuming code if required;
+- No longer trying to naively apply uniqueness to the stream, this can be composed by consuming code if required;
 - Late observers will now receive up-to-date state when subscribing;
 
 ### internal
