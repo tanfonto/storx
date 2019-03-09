@@ -15,16 +15,16 @@ of code;
 
 ### about
 
-- functional, statically typed codebase;
+-   functional, statically typed codebase;
 
-- small and concise;
+-   small and concise;
 
-- dependency-free (minus RxJS, obviously);
+-   dependency-free (minus RxJS, obviously);
 
-- dead simple api (see 'usage' below and tests);
+-   dead simple api (see 'usage' below and tests);
 
-- RxJS compatible, meaning you can plug it into your streams right
-away;
+-   RxJS compatible, meaning you can plug it into your streams right
+ away;
 
 ### installation
 
