@@ -1,7 +1,7 @@
 import { test } from 'ava-ts';
 import { when } from '../../src/utils';
 
-type List = Array<any>;
+type List = any[];
 
 const weaveWhen = when<object, List, number>(
   x => typeof x === 'object',

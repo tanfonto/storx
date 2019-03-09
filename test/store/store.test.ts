@@ -17,8 +17,8 @@ const testStore = (value, ...effects) =>
   Store(
     { value },
     {
-      inc: ({ value: v1 }: Box, { value: v2 }: Box) => ({ value: v1 + v2 }),
-      dec: ({ value: v1 }: Box, { value: v2 }: Box) => ({ value: v1 - v2 })
+      dec: ({ value: v1 }: Box, { value: v2 }: Box) => ({ value: v1 - v2 }),
+      inc: ({ value: v1 }: Box, { value: v2 }: Box) => ({ value: v1 + v2 })
     },
     ...effects
   );
@@ -98,7 +98,7 @@ test.cb('effects are triggered per action rather than per subscriber', t => {
   let counter = 0;
   const store = testStore(0, () => counter++);
 
-  store().subscribe(() => {});
+  store().subscribe(() => t.log('subscribed before any actions were taken'));
 
   store(['inc', { value: 42 }]);
   store(['inc', { value: 42 }]);
