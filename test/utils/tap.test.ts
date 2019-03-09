@@ -15,7 +15,7 @@ test('tap returns the output of the function passed', t => {
 });
 
 test('tap is idempotent, likely', t => {
-  const f = tap(x => x, () => {});
+  const f = tap(x => x, () => void 0);
   f(42), f(42), f(42);
   const actual = f(42);
   t.deepEqual(actual, 42);
