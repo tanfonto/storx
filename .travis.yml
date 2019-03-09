@@ -25,4 +25,4 @@ deploy:
     secure: iASznv/4B2C71ybeHKvqujbNXE96LLSBBOfaYkKsZUKuiVN8sJWhGKZJwL2p9/kxW2HwnOWKhKAk0rMyRBmMjMKGCAzcSA0uWOUD+3NC12fgmWWeH4FXhAmbxYq62dvQh9G5s/a8s+zdfhkbKuVTyJFMtxQzh/sd8YO8ksTP5oExCH4697pXWKOWx6dH7CP3sNsYHBNAjd0EQGQoQnsNuLKOU+xIDy6qKxy1NA8VlKB4al/b5kU/uuBTXhyz8c/1ugqe0FzJx0aoLQ190qg/NeI9Bk93H3BOplq6mWwfl85j12W8FKsCrfpeRhT93l1huZRcydf1aZpS1BgNyNBd8MZWLBhRXOvO9dSxUp1E2+2rgbdhNtOPlBSWWAsRqpxC4t+8jVRn6bY4uN7T1xN+7Uot2s+A5Dm7kdib6IafL4OsBbnAfUVDGTcghZjM+p+MC5OMbvg1BPmPyP+FHSatXdlJ/lg2AzlEKQt4koOMhZtSV7l5UIUiTmTvOJVbY8/SLfuJZYC8+eLdwyHLBVOAz8NGs1jzyPtrwMMuh4T8Z26qwXAPyP7V1/cE/bMQkDRSs0JOzV0xwhuAUns9IndZ36K7oi8ecloGVipOOnMx4apW/I7nuIy3P2kkhaffj5GDa96HymHOJXdWDkp1NYKJDYaedGvYq5US/3KVfpgNa2o=
   on:
     tags: true
-    repo: tanfonto/storx
+      repo: tanfonto/storx
