@@ -13,22 +13,26 @@ Dead simple state management built with
 [TypeScript](https://github.com/Microsoft/TypeScript) in just few lines
 of code;
 
-#### about
+### about
 
 -  functional, statically typed codebase;
+
 -  small and concise;
+
 -  dependency-free (minus RxJS, obviously);
+
 -  dead simple api (see 'usage' below and tests);
+
 -  RxJS compatible, meaning you can plug it into your streams right
 away;
 
-#### installation
+### installation
 
 ```
 npm i @tanfonto/storx
 ```
 
-#### usage
+### usage
 
 ```typescript
 import { Store } from '@tanfonto/storx';
