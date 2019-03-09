@@ -9,7 +9,7 @@ test('tap calls the side effect', t => {
 });
 
 test('tap returns the output of the function passed', t => {
-  const f = tap(x => x, () => {});
+  const f = tap(x => x, () => void 0);
   const actual = f(42);
   t.deepEqual(actual, 42);
 });
