@@ -1,11 +1,13 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended"
-  ],
-  "jsRules": {},
+  "linterOptions": {
+    "exclude": ["**/*.js"]
+  },
+  "extends": ["tslint:recommended"],
   "rules": {
-    "quotemark": [ true, "single" ],
-    "interface-name": true
+    "quotemark": [true, "single"],
+    "interface-name": false,
+    "arrow-parens": false,
+    "trailing-comma": true
   }
 }

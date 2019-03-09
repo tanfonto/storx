@@ -1,0 +1,11 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "../tslint.json"],
+  "rules": {
+    "quotemark": [true, "single"],
+    "trailing-comma": true,
+    "only-arrow-functions": false,
+    "no-empty": false,
+    "allow-empty-functions": true
+  }
+}
