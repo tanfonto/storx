@@ -1,10 +1,10 @@
 import { Observable, ReplaySubject } from 'rxjs';
 import { map, scan, shareReplay, tap } from 'rxjs/operators';
 import { Effect, Functor } from '../../types';
-import { isArray, isEmpty, when, head, len } from '../utils';
+import { head, isArray, isEmpty, len, when } from '../utils';
 import { ap } from './apply';
 import { doEffects } from './do-effects';
-import { ActionDetails, Config, ActionPayload } from './types';
+import { ActionDetails, ActionPayload, Config } from './types';
 
 const { is } = Object;
 
