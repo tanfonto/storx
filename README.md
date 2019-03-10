@@ -53,9 +53,9 @@ const store = Store(
 store().subscribe(console.log);
 
 // dispatch 'inc' action
-store({ action: 'inc', payload: { value: 4 } });
+store('inc', { value: 4 });
 // dispatch 'dec' action
-store({ action: 'dec', payload: { value: 2 } });
+store('dec', { value: 2 });
 
 // dispatch 'anonymous' action
 store((x: No) => ({ value: x.value + 3 }));
@@ -82,7 +82,7 @@ const storeWithEffects = Store(
   console.log
 );
 
-storeWithEffects(['inc', { value: 42 }]);
+storeWithEffects('inc', { value: 42 });
 storeWithEffects().subscribe(console.log);
 storeWithEffects().subscribe(console.log);
 
