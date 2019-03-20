@@ -2,7 +2,7 @@ import { map, tap } from 'rxjs/operators';
 import { Effect } from '../../types';
 import { doEffects } from './do-effects';
 import { fold } from './fold';
-import { match } from './match';
+import { select } from './select';
 import { of } from './of';
 import { ActionRecord, StoreConfig } from './types';
 
@@ -12,15 +12,14 @@ export function Store<S, P = S>(
   ...effects: Array<Effect<S>>
 ) {
   const { observable, next } = of<S, P>();
-  const resolve = match(config);
   const state = observable.pipe(
     tap<ActionRecord<S, P>>(doEffects(...effects)),
-    map(({ args, functor }) => functor || resolve(args)),
+    map(select(config)),
     fold<S>(initialState)
   );
 
   return {
-    history: observable,
+    _history: observable,
     dispatch: next,
     state
   };

@@ -34,6 +34,8 @@ npm i @tanfonto/storx
 
 ### usage
 
+#### Basic example
+
 ```typescript
 import { Store } from '@tanfonto/storx';
 
@@ -49,20 +51,22 @@ const store = Store(
   }
 );
 
+const { state, dispatch } = store;
+
 // subscribe to state changes
-store().subscribe(console.log);
+state.subscribe(console.log);
 
 // dispatch 'inc' action
-store('inc', { value: 4 });
+dispatch('inc', { value: 4 });
 // dispatch 'dec' action
-store('dec', { value: 2 });
+dispatch('dec', { value: 2 });
 
 // dispatch 'anonymous' action
-store((x: No) => ({ value: x.value + 3 }));
+dispatch((x: No) => ({ value: x.value + 3 }));
 
 // dispatch parametrised 'anonymous' action from closure
 function closure(val: number) {
-  store((x: No) => ({ value: x.value + val }));
+  dispatch((x: No) => ({ value: x.value + val }));
 }
 
 closure(4);
@@ -73,6 +77,11 @@ closure(4);
 // { value: 6 }
 // { value: 10 }
 
+```
+
+#### Using .... side effects
+
+```typescript
 // since 1.1 - declare a (pre) state update side effect
 const storeWithEffects = Store(
   { value: 1 },
@@ -82,12 +91,17 @@ const storeWithEffects = Store(
   console.log
 );
 
-storeWithEffects('inc', { value: 42 });
-storeWithEffects().subscribe(console.log);
-storeWithEffects().subscribe(console.log);
+const { state, dispatch } = store;
+
+dispatch('inc', { value: 42 });
+state.subscribe(console.log);
+state.subscribe(console.log);
 
 // output (note that side effect was only triggered once despite 2 subscribe registrations):
 // [ 'inc', { value: 42 } ]
 // { value: 43 }
 // { value: 43 }
 ```
+
+#### Store composition
+####
