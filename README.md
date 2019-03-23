@@ -87,7 +87,7 @@ const storeWithEffects = Store(
   {
     inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 })
   },
-  // Here's the place 
+  // Here's the place
   console.log
 );
 
@@ -97,7 +97,8 @@ dispatch('inc', { value: 42 });
 state.subscribe(console.log);
 state.subscribe(console.log);
 
-// output (note that side effect was only triggered once despite 2 subscribe registrations):
+// output (note that side effect was only triggered once
+// despite 2 subscribe registrations):
 // [ 'inc', { value: 42 } ]
 // { value: 43 }
 // { value: 43 }
@@ -120,7 +121,8 @@ payload) representing action name and patch data as their first and only
 argument.
 
 -   ```select : Config s p -> ActionRecord s p -> (Functor s | (p ->
-Functor s))```
+Functor s))
+```
 
 given configuration object, keys of which represent actions names and
 values describing binary functions of (state, patch) and argument being
