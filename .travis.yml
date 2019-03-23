@@ -1,28 +1,28 @@
 language: node_js
 node_js:
-  - node
+- node
 install:
-  - npm ci
+- npm ci
 cache:
   directories:
-    - node_modules
+  - node_modules
 jobs:
   include:
-    - stage: lint
-      script: npm run lint
-    - stage: test
-      script: npm test
-    - stage: build
-      script: npm run build
+  - stage: lint
+    script: npm run lint
+  - stage: test
+    script: npm test
+  - stage: build
+    script: npm run build
 stages:
-  - lint
-  - test
-  - build
+- lint
+- test
+- build
 deploy:
   provider: npm
   email: tanfonto@pm.me
   api_key:
-    secure: iASznv/4B2C71ybeHKvqujbNXE96LLSBBOfaYkKsZUKuiVN8sJWhGKZJwL2p9/kxW2HwnOWKhKAk0rMyRBmMjMKGCAzcSA0uWOUD+3NC12fgmWWeH4FXhAmbxYq62dvQh9G5s/a8s+zdfhkbKuVTyJFMtxQzh/sd8YO8ksTP5oExCH4697pXWKOWx6dH7CP3sNsYHBNAjd0EQGQoQnsNuLKOU+xIDy6qKxy1NA8VlKB4al/b5kU/uuBTXhyz8c/1ugqe0FzJx0aoLQ190qg/NeI9Bk93H3BOplq6mWwfl85j12W8FKsCrfpeRhT93l1huZRcydf1aZpS1BgNyNBd8MZWLBhRXOvO9dSxUp1E2+2rgbdhNtOPlBSWWAsRqpxC4t+8jVRn6bY4uN7T1xN+7Uot2s+A5Dm7kdib6IafL4OsBbnAfUVDGTcghZjM+p+MC5OMbvg1BPmPyP+FHSatXdlJ/lg2AzlEKQt4koOMhZtSV7l5UIUiTmTvOJVbY8/SLfuJZYC8+eLdwyHLBVOAz8NGs1jzyPtrwMMuh4T8Z26qwXAPyP7V1/cE/bMQkDRSs0JOzV0xwhuAUns9IndZ36K7oi8ecloGVipOOnMx4apW/I7nuIy3P2kkhaffj5GDa96HymHOJXdWDkp1NYKJDYaedGvYq5US/3KVfpgNa2o=
+    secure: H+cZAUMdrfyETdWJ77j1jvzyQhsZhnHdULoZef5geXB/1U/c73yHaOPgeEkRQki+Jwn9E6PuQMMsqStDfvG5L4Vbvz8ZIvYFZbaU+REs5DorwHJWwrQICw+MMq8iiplG3JzBnBsxBSJIVQjV+NruhVBMJhMlJgT64uXh+vT6a4N/bmuXyHkq5Oi/KoGVLJe/kH8nycLntDv2VNJz6PKzH/c4SLJoBYq7EadEgW3mI4Feb06sexVIUQadcgUhnBqNZWQ9fJTrL021cGgCXSqSjp2WKGr8KR+/W6VmJ1MAr5pC1R8ZpLUBzXnVU7ASURUjQZWfygqe82bOh3MNEaqI01+aEhjWWt51eZq7OU6joWmgluvBzt5tDXs9Kq3/aNzJlehRe9gfmBLMtb6b1sZCUUpl/5Gw6bPTlXd/zVDUWLByfmu/3X6Z5IPSSydXBDyWf5StaIOsCzVtb69EQu29yz5O6hC51powip/Nb+hOIrFu1nRsTB1R7C98e6gS9GJSh7OJ7TvkEaDO50kuOk8mkWypMbjsC5wxZfoAFSARc/R9Rsmmf8kU30roctWFM6+0CZoqqk0/XEJX1fIKL6xR4px7i9QZ2I9qERVJDgIAT8R6pFYW6qgNRJCi4fhOpxb+1mOJS8KO0ebZgyn2oTawVcVfvMw677R349Y88WjaikA=
   on:
     tags: true
     repo: tanfonto/storx
