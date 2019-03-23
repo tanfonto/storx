@@ -15,16 +15,16 @@ of code;
 
 ### about
 
--   functional, statically typed codebase;
+- functional, statically typed codebase;
 
--   small and concise;
+- small and concise;
 
--   dependency-free (minus RxJS, obviously);
+- dependency-free (minus RxJS, obviously);
 
--   dead simple api (see 'usage' below and tests);
+- dead simple api (see 'usage' below and tests);
 
--   RxJS compatible, meaning you can plug it into your streams right
-away;
+- RxJS compatible, meaning you can plug it into your streams right
+  away;
 
 ### installation
 
@@ -105,22 +105,22 @@ state.subscribe(console.log);
 
 #### Building blocks & composition
 
-```of : () s p -> SubjectLike ActionRecord s p```
+`of : () s p -> SubjectLike ActionRecord s p`
 
 creates a private instance of ReplaySubject and returns an
 Observable and `next` function that may take one of two forms:
 
-> -   (Functor s) -> void
-> -   (key, payload) -> void
+> - (Functor s) -> void
+> - (key, payload) -> void
 
-```doEffects : [ (ActionRecord s p -> void) ] -> void```
+`doEffects : [ (ActionRecord s p -> void) ] -> void`
 
 fires a list of unary functions with a tuple of (key,
 payload) representing action name and patch data as their first and only
 argument.
 
-```select :
-  Config s p -> ActionRecord s p -> (Functor s | (p -> Functor s))```
+`select : Config s p -> ActionRecord s p -> (Functor s | (p -> Functor
+s))`
 
 given configuration object, keys of which represent actions names and
 values describing binary functions of (state, patch) and argument being
@@ -129,7 +129,7 @@ these forms was used and either shorten a binary functor to curried
 unary version bound to patch data or pass the free (unary) one for
 further processing.
 
-```fold : state -> Observable Functor s -> Observable s```
+`fold : state -> Observable Functor s -> Observable s`
 
 runs the emitted functor against current state and emits the result.
 
