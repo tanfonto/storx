@@ -2,8 +2,8 @@ import { map, tap } from 'rxjs/operators';
 import { Effect } from '../../types';
 import { doEffects } from './do-effects';
 import { fold } from './fold';
-import { select } from './select';
 import { of } from './of';
+import { select } from './select';
 import { ActionRecord, StoreConfig } from './types';
 
 export function Store<S, P = S>(

@@ -16,7 +16,7 @@ const testStore = (value: number, ...effects: Array<Effect<any>>) =>
 
 test.cb('dispatching bound action updates primitive state accordingly', t => {
   const { dispatch, state } = Store(1, {
-    inc: (state, patch) => state + patch
+    inc: (s, patch) => s + patch
   });
 
   willAssert(t, state, 4);

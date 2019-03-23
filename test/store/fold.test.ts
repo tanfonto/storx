@@ -4,7 +4,9 @@ import { fold } from '../../src/store';
 import { Functor } from '../../types';
 import { willAssert } from '../will-assert';
 
-type Box = { val: number };
+interface Box {
+  val: number;
+}
 
 const push = (src: Subject<Functor<Box>>) => (val: number) =>
   src.next((x: Box) => ({ val: x.val + val }));
