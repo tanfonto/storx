@@ -107,8 +107,7 @@ state.subscribe(console.log);
 -   ```of : () s p -> SubjectLike ActionRecord s p```
 
 creates a private instance of ReplaySubject and returns an
-Observable extended with `next` method that takes one of two
-forms:
+Observable and `next` method that takes one of two forms:
 
 > -   (Functor s) -> void
 > -   ((key, payload) -> void
@@ -122,11 +121,12 @@ argument.
 -   ```select : Config s p -> ActionRecord s p -> (Functor s | (p ->
 Functor s))```
 
-given configuration object, keys of which represent actions names whilst
-values describe binary functions of (state, patch) and argument being a
-tuple of (key, payload) or unary function it will detect which of these
-forms was used and either shorten a binary functor to unary version or
-simply pass the free (unary) one further into the processing chain.
+given configuration object, keys of which represent actions names and
+values describing binary functions of (state, patch) and argument being
+a tuple of (key, payload) or unary function it will detect which of
+these forms was used and either shorten a binary functor to curried
+unary version bound to patch data or pass the free (unary) one for
+further processing.
 
 -   ```fold : state -> Observable Functor s -> Observable s```
 
@@ -134,10 +134,10 @@ runs the emitted functor against current state and emits the result.
 
 The exemplary `Store` implementation consists of these 4 composed in
 above order, wrapped in appropriate RxJS operators. Exposing isolated
-pipes brings an opportunity of reimplementation to ones flavour, by
+pipes brings an opportunity of reimplementation to ones flavour, i.e. by
 injecting additional pipes or cutting some of the logic.
 
-Please note that 'functor' is used to describe the actual 'map' function
+Please note that 'functor' is used to describe the 'map' function
 of CT functor rather than container itself as it is always used in a
 context of observable mapping.
 
