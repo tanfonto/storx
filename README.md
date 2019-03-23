@@ -110,8 +110,10 @@ state.subscribe(console.log);
 creates a private instance of ReplaySubject and returns an
 Observable and `next` function that may take one of two forms:
 
-> -   (Functor s) -> void
-> -   (key, payload) -> void
+```
+- (Functor s) -> void
+- (key, payload) -> void
+```
 
 `doEffects : [ (ActionRecord s p -> void) ] -> void`
 

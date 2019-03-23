@@ -1,24 +1,24 @@
-# v1.1
+## v1.1
 
-## new features
+### new features
 
 -   (pre) state change side effects support;
 
-## bug fixes
+### bug fixes
 
 -   No longer trying to naively apply uniqueness to the stream, this can
 be composed by consuming code if required;
 
 -   Late observers will now receive up-to-date state when subscribing;
 
-## internal
+### internal
 
 -   Project structure improvements;
 -   Dependencies update;
 
-# v1.2
+## v1.2
 
-## new features
+### new features
 
 -   implementation details are now exposed in a form of 'building
 blocks' and allow custom composition;
