@@ -64,7 +64,7 @@ dispatch('dec', { value: 2 });
 // dispatch 'anonymous' action
 dispatch((x: No) => ({ value: x.value + 3 }));
 
-// dispatch parametrised 'anonymous' action from closure
+// dispatch parametrised 'unbound' action from closure
 function closure(val: number) {
   dispatch((x: No) => ({ value: x.value + val }));
 }
@@ -87,7 +87,7 @@ const storeWithEffects = Store(
   {
     inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 })
   },
-  // Here's the place
+  // Here's the place:
   console.log
 );
 
@@ -97,8 +97,7 @@ dispatch('inc', { value: 42 });
 state.subscribe(console.log);
 state.subscribe(console.log);
 
-// output (note that side effect was only triggered once
-// despite 2 subscribe registrations):
+// output (note that side effect was only triggered once despite 2 // ///// subscribe registrations):
 // [ 'inc', { value: 42 } ]
 // { value: 43 }
 // { value: 43 }
@@ -112,7 +111,7 @@ creates a private instance of ReplaySubject and returns an
 Observable and `next` function that may take one of two forms:
 
 > -   (Functor s) -> void
-> -   ((key, payload) -> void
+> -   (key, payload) -> void
 
 -   ```doEffects : [ (ActionRecord s p -> void) ] -> void```
 
