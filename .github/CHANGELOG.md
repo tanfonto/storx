@@ -20,8 +20,8 @@ be composed by consuming code if required;
 
 ### new features
 
--   implementation details are now exposed in a form of 'building
-blocks' and allow custom composition;
+-   implementation details are now exposed in a form of "building
+blocks" which allow custom composition;
 -   the default store implementation api was rearranged and expose
 dispatch, observable and (private) _history properties;
 -   documentation (aka readme) was adjusted to include these changes;
