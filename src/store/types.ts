@@ -8,5 +8,5 @@ export type ActionRecord<
   P,
   T extends ActionPayload<S, P> = ActionPayload<S, P>
 > = T extends ActionEntry<S, P>
-  ? { args: never; functor: Functor<S> }
-  : { args: ActionEntry<S, P>; functor: never };
+  ? { args: null; functor: Functor<S> }
+  : { args: ActionEntry<S, P>; functor: null };

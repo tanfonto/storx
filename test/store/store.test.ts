@@ -1,14 +1,8 @@
-import { GenericCallbackTestContext, test } from 'ava-ts';
+import { test } from 'ava-ts';
 import { map, skip, tap } from 'rxjs/operators';
 import { Store } from '../../src/store';
 import { Effect } from '../../types';
-import { Observable } from 'rxjs';
-
-type Ctx<T = any> = GenericCallbackTestContext<T>;
-
-const willAssert = <T>(t: Ctx, store: Observable<T>, expected: T) => {
-  store.pipe(map(s => t.deepEqual(s, expected))).subscribe(t.end);
-};
+import { willAssert } from '../will-assert';
 
 const testStore = (value: number, ...effects: Array<Effect<any>>) =>
   Store<{ value: number }>(

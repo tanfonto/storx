@@ -13,7 +13,7 @@ const normalize = <S, P>(
 export const of = <S, P>() => {
   const src = new ReplaySubject<ActionRecord<S, P>>();
   return {
-    observable: src.asObservable(),
-    next: (...args: ActionPayload<S, P>) => src.next(normalize(args))
+    next: (...args: ActionPayload<S, P>) => src.next(normalize(args)),
+    observable: src.asObservable()
   };
 };

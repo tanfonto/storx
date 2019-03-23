@@ -1,3 +1,4 @@
+export type Key = string | number;
 export type EntryOf<T0 = any, T1 = T0> = [keyof T0, T1];
 export interface Dictionary<T> {
   [key: string]: T;

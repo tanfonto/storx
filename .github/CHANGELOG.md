@@ -15,3 +15,13 @@ be composed by consuming code if required;
 
 -   Project structure improvements;
 -   Dependencies update;
+
+# v1.2
+
+## new features
+
+-   implementation details are now exposed in a form of 'building
+blocks' and allow custom composition;
+-   the default store implementation api was rearranged and expose
+dispatch, observable and (private) _history properties;
+-   documentation (aka readme) was adjusted to include these changes;

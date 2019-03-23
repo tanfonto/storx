@@ -1,10 +1,12 @@
-import { Observable } from 'rxjs';
+import { pipe } from 'rxjs';
 import { scan, shareReplay } from 'rxjs/operators';
 import { Functor } from '../../types';
 import { ap } from './apply';
 
-export const fold = <S>(seed: S) => (x: Observable<Functor<S>>) =>
-  x.pipe(
+const shareReplayLast = shareReplay(1);
+
+export const fold = <S>(seed: S) =>
+  pipe(
     scan<Functor<S>, S>(ap, seed),
-    shareReplay<S>(1)
+    shareReplayLast
   );

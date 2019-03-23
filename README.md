@@ -15,16 +15,15 @@ of code;
 
 ### about
 
--   functional, statically typed codebase;
+- functional, statically typed codebase;
 
--   small and concise;
+- small and concise;
 
--   dependency-free (minus RxJS, obviously);
+- dependency-free (minus RxJS, obviously);
 
--   dead simple api (see 'usage' below and tests);
+- dead simple api (see 'usage' below and tests);
 
--   RxJS compatible, meaning you can plug it into your streams right
- away;
+- RxJS compatible, meaning you can plug it into your streams right away;
 
 ### installation
 
@@ -63,7 +62,7 @@ dispatch('dec', { value: 2 });
 
 // dispatch 'anonymous' action
 dispatch((x: No) => ({ value: x.value + 3 }));
-
+}
 // dispatch parametrised 'anonymous' action from closure
 function closure(val: number) {
   dispatch((x: No) => ({ value: x.value + val }));
@@ -76,10 +75,9 @@ closure(4);
 // { value: 3 }
 // { value: 6 }
 // { value: 10 }
-
 ```
 
-#### Using .... side effects
+#### Using pre-update side effects
 
 ```typescript
 // since 1.1 - declare a (pre) state update side effect
@@ -88,6 +86,7 @@ const storeWithEffects = Store(
   {
     inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 })
   },
+  // Here, a variadic list of void's
   console.log
 );
 
@@ -103,5 +102,45 @@ state.subscribe(console.log);
 // { value: 43 }
 ```
 
-#### Store composition
-####
+#### Building blocks & composition
+
+-   ```of : () s p -> SubjectLike ActionRecord s p```
+
+creates a private instance of ReplaySubject and returns an
+Observable extended with `next` method that takes one of two
+forms:
+
+> -   (Functor s) -> void
+> -   ((key, payload) -> void
+
+-   ```doEffects : [ (ActionRecord s p -> void) ] -> void```
+
+fires a list of unary functions with a tuple of (key,
+payload) representing action name and patch data as their first and only
+argument.
+
+-   ```select : Config s p -> ActionRecord s p -> (Functor s | (p ->
+Functor s))```
+
+given configuration object, keys of which represent actions names whilst
+values describe binary functions of (state, patch) and argument being a
+tuple of (key, payload) or unary function it will detect which of these
+forms was used and either shorten a binary functor to unary version or
+simply pass the free (unary) one further into the processing chain.
+
+-   ```fold : state -> Observable Functor s -> Observable s```
+
+runs the emitted functor against current state and emits the result.
+
+The exemplary `Store` implementation consists of these 4 composed in
+above order, wrapped in appropriate RxJS operators. Exposing isolated
+pipes brings an opportunity of reimplementation to ones flavour, by
+injecting additional pipes or cutting some of the logic.
+
+Please note that 'functor' is used to describe the actual 'map' function
+of CT functor rather than container itself as it is always used in a
+context of observable mapping.
+
+#### History api / time travelling
+
+Incoming.
