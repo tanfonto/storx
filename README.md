@@ -109,7 +109,7 @@ state.subscribe(console.log);
 -   ```of : () s p -> SubjectLike ActionRecord s p```
 
 creates a private instance of ReplaySubject and returns an
-Observable and `next` method that takes one of two forms:
+Observable and `next` function that may take one of two forms:
 
 > -   (Functor s) -> void
 > -   ((key, payload) -> void
