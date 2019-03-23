@@ -15,15 +15,15 @@ of code;
 
 ### about
 
-- functional, statically typed codebase;
+-   functional, statically typed codebase;
 
-- small and concise;
+-   small and concise;
 
-- dependency-free (minus RxJS, obviously);
+-   dependency-free (minus RxJS, obviously);
 
-- dead simple api (see 'usage' below and tests);
+-   dead simple api (see 'usage' below and tests);
 
-- RxJS compatible, meaning you can plug it into your streams right
+-   RxJS compatible, meaning you can plug it into your streams right
   away;
 
 ### installation
@@ -110,8 +110,8 @@ state.subscribe(console.log);
 creates a private instance of ReplaySubject and returns an
 Observable and `next` function that may take one of two forms:
 
-> - (Functor s) -> void
-> - (key, payload) -> void
+> -   (Functor s) -> void
+> -   (key, payload) -> void
 
 `doEffects : [ (ActionRecord s p -> void) ] -> void`
 
