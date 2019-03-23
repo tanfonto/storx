@@ -24,7 +24,7 @@ of code;
 -   dead simple api (see 'usage' below and tests);
 
 -   RxJS compatible, meaning you can plug it into your streams right
-away; 
+away;
 
 ### installation
 
@@ -63,7 +63,7 @@ dispatch('dec', { value: 2 });
 
 // dispatch 'anonymous' action
 dispatch((x: No) => ({ value: x.value + 3 }));
-}
+
 // dispatch parametrised 'anonymous' action from closure
 function closure(val: number) {
   dispatch((x: No) => ({ value: x.value + val }));
@@ -87,7 +87,7 @@ const storeWithEffects = Store(
   {
     inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 })
   },
-  // Here, a variadic list of void's
+  // Here's the place 
   console.log
 );
 
