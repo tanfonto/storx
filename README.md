@@ -119,8 +119,7 @@ fires a list of unary functions with a tuple of (key,
 payload) representing action name and patch data as their first and only
 argument.
 
-```select :
-  Config s p -> ActionRecord s p -> (Functor s | (p -> Functor s))```
+```select : Config s p -> ActionRecord s p -> (Functor s | (p -> Functor s))```
 
 given configuration object, keys of which represent actions names and
 values describing binary functions of (state, patch) and argument being
