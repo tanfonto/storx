@@ -97,7 +97,7 @@ dispatch('inc', { value: 42 });
 state.subscribe(console.log);
 state.subscribe(console.log);
 
-// output (note that side effect was only triggered once despite 2 // ///// subscribe registrations):
+// output (note that side effect was only triggered once despite two 'subscribe' registrations):
 // [ 'inc', { value: 42 } ]
 // { value: 43 }
 // { value: 43 }
@@ -107,11 +107,11 @@ state.subscribe(console.log);
 
 `of : () s p -> SubjectLike ActionRecord s p`
 
-creates a private instance of ReplaySubject and returns an
-Observable and `next` function that may take one of two forms:
+creates a (private) instance of ReplaySubject and returns it converted to
+Observable extended with custom `next` function that may take one of two forms:
 
 ```
-- (Functor s) -> void
+- Functor s -> void
 - (key, payload) -> void
 ```
 
