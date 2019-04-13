@@ -8,7 +8,7 @@ license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit
 
 ## | storx |
 
-Dead simple state management built with
+Centralised, flexible state management built with
 [RxJS](https://github.com/ReactiveX/RxJS) &
 [TypeScript](https://github.com/Microsoft/TypeScript) in just few lines
 of code;
