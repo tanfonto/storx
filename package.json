@@ -26,6 +26,7 @@
   "repository": {
     "url": "https://github.com/tanfonto/storx"
   },
+  "types": "dist/index.d.ts",
   "author": "tanfonto",
   "license": "MIT",
   "devDependencies": {
