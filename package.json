@@ -1,7 +1,7 @@
 {
   "name": "@tanfonto/storx",
-  "version": "1.2.1",
-  "description": "Dead simple state management",
+  "version": "1.2.2",
+  "description": "Flexible, centralised state management built with RxJS",
   "keywords": [
     "state management",
     "centralized store",
@@ -26,6 +26,7 @@
   "repository": {
     "url": "https://github.com/tanfonto/storx"
   },
+  "types": "dist/index.d.ts",
   "author": "tanfonto",
   "license": "MIT",
   "devDependencies": {
