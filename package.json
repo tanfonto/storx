@@ -1,6 +1,6 @@
 {
   "name": "@tanfonto/storx",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Flexible, centralised state management built with RxJS",
   "keywords": [
     "state management",
