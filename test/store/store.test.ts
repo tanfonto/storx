@@ -1,8 +1,7 @@
-import { test } from 'ava-ts';
 import { map, skip, tap } from 'rxjs/operators';
 import { Store } from '../../src/store';
 import { Effect } from '../../types';
-import { willAssert } from '../will-assert';
+import { onEmit } from '../on-emit';
 
 const testStore = (value: number, ...effects: Array<Effect<any>>) =>
   Store<{ value: number }>(
@@ -14,83 +13,83 @@ const testStore = (value: number, ...effects: Array<Effect<any>>) =>
     ...effects
   );
 
-test.cb('dispatching bound action updates primitive state accordingly', t => {
+test('dispatching bound action updates primitive state accordingly', done => {
   const { dispatch, state } = Store(1, {
     inc: (s, patch) => s + patch
   });
 
-  willAssert(t, state, 4);
+  onEmit(done, state, 4);
 
   dispatch('inc', 3);
 });
 
-test.cb('dispatching bound action updates complex state accordingly', t => {
+test('dispatching bound action updates complex state accordingly', done => {
   const { dispatch, state } = testStore(1);
 
-  willAssert(t, state, { value: 4 });
+  onEmit(done, state, { value: 4 });
 
   dispatch('inc', { value: 3 });
 });
 
-test.cb('dispatching free action updates primitive state accordingly', t => {
+test('dispatching free action updates primitive state accordingly', done => {
   const { dispatch, state } = Store(42, {});
 
-  willAssert(t, state, 50);
+  onEmit(done, state, 50);
 
   dispatch((x: number) => x + 8);
 });
 
-test.cb('dispatching free action updates complex state accordingly', t => {
+test('dispatching free action updates complex state accordingly', done => {
   const { dispatch, state } = Store({ value: 42 }, {});
 
-  willAssert(t, state, { value: 50 });
+  onEmit(done, state, { value: 50 });
 
   dispatch(({ value }) => ({ value: value + 8 }));
 });
 
-test.cb('consequent changes are getting applied correctly', t => {
+test('consequent changes are getting applied correctly', done => {
   const { dispatch, state } = testStore(42);
 
   state
     .pipe(
       skip(2),
-      map(s => t.deepEqual(s, { value: 60 }))
+      map(s => expect(s).toEqual({ value: 60 }))
     )
-    .subscribe(t.end);
+    .subscribe(done);
 
   dispatch('inc', { value: 5 });
   dispatch(({ value }) => ({ value: value + 15 }));
   dispatch('dec', { value: 2 });
 });
 
-test.cb('late subscribers receive up-to-date state', t => {
+test('late subscribers receive up-to-date state', done => {
   const { dispatch, state } = testStore(42);
 
   dispatch('inc', { value: 5 });
   dispatch(({ value }) => ({ value: value + 15 }));
   dispatch('inc', { value: 8 });
 
-  state.pipe(map(s => t.deepEqual(s, { value: 70 }))).subscribe(t.end);
+  state.pipe(map(s => expect(s).toEqual({ value: 70 }))).subscribe(done);
 });
 
-test.cb('effects are triggered', t => {
+test('effects are triggered', done => {
   let counter = 0;
   const { dispatch, state } = testStore(0, () => counter++);
 
   dispatch('inc', { value: 42 });
   dispatch('inc', { value: 42 });
 
-  state.pipe(tap(() => t.deepEqual(counter, 2))).subscribe(() => t.end());
+  state.pipe(tap(() => expect(counter).toBe(2))).subscribe(() => done());
 });
 
-test.cb('effects are triggered per action rather than per subscriber', t => {
+test('effects are triggered per action rather than per subscriber', done => {
   let counter = 0;
   const { dispatch, state } = testStore(0, () => counter++);
 
-  state.subscribe(() => t.log('subscribed early'));
+  state.subscribe(() => console.log('subscribed early'));
 
   dispatch('inc', { value: 42 });
   dispatch('inc', { value: 42 });
 
-  state.pipe(tap(() => t.deepEqual(counter, 2))).subscribe(() => t.end());
+  state.pipe(tap(() => expect(counter).toBe(2))).subscribe(() => done());
 });
