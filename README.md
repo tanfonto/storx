@@ -12,7 +12,6 @@ Centralised state management powered by
 [RxJS](https://github.com/ReactiveX/RxJS) &
 [TypeScript](https://github.com/Microsoft/TypeScript);
 
-
 *   [`Features`](#Features)
 *   [`Installation`](#Installation)
 *   [`Usage examples`](#Usage-examples)
@@ -196,7 +195,6 @@ injecting additional pipes or cutting some of the logic.
 Please note that 'functor' is used to describe the 'map' function
 of CT functor rather than container itself as it is always used in a
 context of observable mapping.
-
 
 ### Incoming
 
