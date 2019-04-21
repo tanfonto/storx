@@ -1,5 +1,5 @@
 import { ReplaySubject, Subject } from 'rxjs';
-import { fold } from '../../src/store';
+import { calculate } from '../../src/store';
 import { onEmit } from '../on-emit';
 
 interface Box {
@@ -11,7 +11,7 @@ const push = (src: Subject<Functor<Box>>) => (val: number) =>
 
 test('fold runs transfomation provided against initial state at first', done => {
   const src = new ReplaySubject<Functor<Box>>();
-  const actual = src.pipe(fold({ val: 42 }));
+  const actual = src.pipe(calculate({ val: 42 }));
 
   push(src)(8);
 
@@ -20,7 +20,7 @@ test('fold runs transfomation provided against initial state at first', done => 
 
 test('fold runs transfomartion provided against most recent state', done => {
   const src = new ReplaySubject<Functor<Box>>();
-  const actual = src.pipe(fold({ val: 42 }));
+  const actual = src.pipe(calculate({ val: 42 }));
   const next = push(src);
 
   next(8);

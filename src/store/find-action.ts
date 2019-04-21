@@ -1,6 +1,4 @@
-import { ActionEntry, ActionRecord, StoreConfig } from './types';
-
-export function select<S, P>(config: StoreConfig<S, P>) {
+export function findAction<S, P>(config: StoreConfig<S, P>) {
   return ({ args, functor }: ActionRecord<S, P>) =>
     functor ||
     ((state: S) => {
