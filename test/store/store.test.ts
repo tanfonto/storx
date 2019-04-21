@@ -50,10 +50,7 @@ test('consequent changes are getting applied correctly', done => {
   const { dispatch, state } = testStore(42);
 
   state
-    .pipe(
-      skip(2),
-      map(s => expect(s).toEqual({ value: 60 }))
-    )
+    .pipe(skip(2), map(s => expect(s).toEqual({ value: 60 })))
     .subscribe(done);
 
   dispatch('inc', { value: 5 });
@@ -85,6 +82,7 @@ test('effects are triggered per action rather than per subscriber', done => {
   let counter = 0;
   const { dispatch, state } = testStore(0, () => counter++);
 
+  // tslint:disable-next-line: no-console
   state.subscribe(() => console.log('subscribed early'));
 
   dispatch('inc', { value: 42 });
