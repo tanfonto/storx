@@ -120,18 +120,19 @@ state.subscribe(console.log);
 
 ##### actions
 
-In contrast to popular store libraries, `Storx` actions represent actual
-transformations rather then intents or descriptors. This decision has
-obvious flexibility / granularity implications but also helps reducing
-boilerplate and overall complexity. It's a simplicity-oriented tradeoff
-but the main principle is to serve as a lightweight
+In contrast to popular state management libraries, `Storx` actions
+represent actual transformations rather then intents or descriptors.
+This decision has obvious flexibility / granularity implications but
+also helps reducing boilerplate and overall complexity. It's a
+simplicity-oriented tradeoff but the main driver for this design is to
+serve as a lightweight
 [scan](http://reactivex.io/documentation/operators/scan.html) operator
 wrapper and RxJS pipeline rather than custom state management
 implementation.
 
 ##### state calculation
 
-Because of how `Storx` defines actions it does not distinguish an
+Because of how `Storx` defines actions it does not need an
 explicit `reducer` layer. Whatever gets dispatched to the store will
 implicitly transform the state and emit the result to subscribers.
 
@@ -141,11 +142,11 @@ Because `Store` instance is an RxJS observable its only limited to RxJS
 pipeline functionality, meaning more or less - unlimited power, some
 ideas follow:
 
-*   Streamlining your store emissions with external source using
+*   Streamlining your store emissions with external sources using
 [combination](https://www.learnrxjs.io/operators/combination/)
 operators;
 
-*   Subsetting your state for particular listeners (`selectors` /
+*   Subsetting your state for particular listeners (aks `selectors` or
 `view-models`) with
 [transformation](https://www.learnrxjs.io/operators/transformation/)
 operators, i.e.
@@ -153,7 +154,7 @@ operators, i.e.
 [pluck](https://www.learnrxjs.io/operators/transformation/pluck.html)
 *   Fine-grained performance optimizations with
 with
-[distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html/), [audit](https://www.learnrxjs.io/operators/filtering/audit.html), [debounce](https://www.learnrxjs.io/operators/filtering/debounce.html) etc.  
+[distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html/), [audit](https://www.learnrxjs.io/operators/filtering/audit.html), [debounce](https://www.learnrxjs.io/operators/filtering/debounce.html) and others;  
 
 
 #### Building blocks & composition
