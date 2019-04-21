@@ -1,22 +1,21 @@
-import { test } from 'ava-ts';
 import { isNil } from '../../src/utils/type-assertions';
 
-test('isNil is true if fed with null', t => {
+test('isNil is true if fed with null', () => {
   const actual = isNil(null);
-  t.true(actual);
+  expect(actual).toBe(true);
 });
 
-test('isNil is true if fed with undefined', t => {
+test('isNil is true if fed with undefined', () => {
   const actual = isNil(undefined);
-  t.true(actual);
+  expect(actual).toBe(true);
 });
 
-test('isNil is false if fed with object', t => {
+test('isNil is false if fed with object', () => {
   const actual = isNil({});
-  t.false(actual);
+  expect(actual).toBe(false);
 });
 
-test('isNil is false if fed with primitive', t => {
+test('isNil is false if fed with primitive', () => {
   const actual = isNil(42);
-  t.false(actual);
+  expect(actual).toBe(false);
 });

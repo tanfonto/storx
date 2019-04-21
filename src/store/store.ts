@@ -1,10 +1,8 @@
 import { map, tap } from 'rxjs/operators';
-import { Effect } from '../../types';
-import { doEffects } from './do-effects';
-import { fold } from './fold';
+import { calculateState } from './calculate-state';
+import { findAction } from './find-action';
 import { of } from './of';
-import { select } from './select';
-import { ActionRecord, StoreConfig } from './types';
+import { runEffects } from './run-effects';
 
 export function Store<S, P = S>(
   initialState: S,
@@ -13,9 +11,9 @@ export function Store<S, P = S>(
 ) {
   const { observable, next } = of<S, P>();
   const state = observable.pipe(
-    tap<ActionRecord<S, P>>(doEffects(...effects)),
-    map(select(config)),
-    fold<S>(initialState)
+    tap<ActionRecord<S, P>>(runEffects(...effects)),
+    map(findAction(config)),
+    calculateState<S>(initialState)
   );
 
   return {

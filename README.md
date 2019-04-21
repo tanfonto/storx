@@ -8,33 +8,44 @@ license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit
 
 ## | storx |
 
-Centralised, flexible state management built with
+Centralised state management powered by
 [RxJS](https://github.com/ReactiveX/RxJS) &
-[TypeScript](https://github.com/Microsoft/TypeScript) in just few lines
-of code;
+[TypeScript](https://github.com/Microsoft/TypeScript);
 
-### about
+*   [`Features`](#Features)
+*   [`Installation`](#Installation)
+*   [`Usage examples`](#Usage-examples)
+*   [`Base concepts`](#Core-concepts)
+*   [`Building blocks & composition`](#Building-blocks-&-composition)
+*   [`Incoming`](#Incoming)
 
--   functional, statically typed codebase;
+### Features
 
--   small and concise;
+*   small and concise;
 
--   dependency-free (minus RxJS, obviously);
+*   dependency-free (minus RxJS, obviously);
 
--   dead simple api (see 'usage' below and tests);
+*   dead simple api (see 'usage' below and tests);
 
--   RxJS compatible, meaning you can plug it into your streams right
-  away;
+*   RxJS compatible, meaning you can plug it into your streams right
+    away;
 
-### installation
+*   functional, statically typed codebase;
+
+### Installation
 
 ```
 npm i @tanfonto/storx
 ```
+or
 
-### usage
+```
+yarn add @tanfonto/storx
+```
 
-#### Basic example
+### Usage examples
+
+#### basic
 
 ```typescript
 import { Store } from '@tanfonto/storx';
@@ -78,7 +89,7 @@ closure(4);
 // { value: 10 }
 ```
 
-#### Using pre-update side effects
+#### with pre-update side effects
 
 ```typescript
 // since 1.1 - declare a (pre) state update side effect
@@ -103,34 +114,76 @@ state.subscribe(console.log);
 // { value: 43 }
 ```
 
-#### Building blocks & composition
+### Core concepts
+
+#### actions
+
+In contrast to popular state management libraries, `Storx` actions
+represent actual transformations rather then intents or descriptors.
+This decision has obvious flexibility / granularity implications but
+also helps reducing boilerplate and overall complexity. It's a
+simplicity-oriented tradeoff but the main driver for this design is to
+serve as a lightweight
+[scan](http://reactivex.io/documentation/operators/scan.html) operator
+wrapper and RxJS pipeline rather than custom state management
+implementation.
+
+#### state calculation
+
+Because of how `Storx` defines actions it does not need an
+explicit `reducer` layer. Whatever gets dispatched to the store will
+implicitly transform the state and emit the result to subscribers.
+
+#### listening to state changes
+
+Because `Store` instance is an RxJS observable its only limited to RxJS
+pipeline functionality, meaning more or less - unlimited power, some
+ideas follow:
+
+*   Streamlining your store emissions with external sources using
+[combination](https://www.learnrxjs.io/operators/combination/)
+operators;
+
+*   Subsetting your state for particular listeners (aks `selectors` or
+`view-models`) with
+[transformation](https://www.learnrxjs.io/operators/transformation/)
+operators, i.e.
+[map](https://www.learnrxjs.io/operators/transformation/map.html),
+[pluck](https://www.learnrxjs.io/operators/transformation/pluck.html);
+
+*   Fine-grained performance optimizations with
+with
+[distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html/), [audit](https://www.learnrxjs.io/operators/filtering/audit.html), [debounce](https://www.learnrxjs.io/operators/filtering/debounce.html) and others;  
+
+### Building blocks & composition
 
 `of : () s p -> SubjectLike ActionRecord s p`
 
-creates a (private) instance of ReplaySubject and returns it converted to
-Observable extended with custom `next` function that may take one of two forms:
+Constructor. creates a (private) instance of ReplaySubject and returns
+it converted to Observable extended with custom `next` function that may
+take one of two forms:
 
 ```
 - Functor s -> void
 - (key, payload) -> void
 ```
 
-`doEffects : [ (ActionRecord s p -> void) ] -> void`
+`runEffects : [ (ActionRecord s p -> void) ] -> void`
 
 fires a list of unary functions with a tuple of (key,
 payload) representing action name and patch data as their first and only
 argument.
 
-```select : Config s p -> ActionRecord s p -> (Functor s | (p -> Functor s))```
+```findAction : Config s p -> ActionRecord s p -> (Functor s | (p -> Functor s))```
 
 given configuration object, keys of which represent actions names and
 values describing binary functions of (state, patch) and argument being
-a tuple of (key, payload) or unary function it will detect which of
-these forms was used and either shorten a binary functor to curried
-unary version bound to patch data or pass the free (unary) one for
+a (1) tuple of (key, payload) or (2) unary function it will detect which of
+these 2 forms was used and either shorten a binary functor to curried
+unary version (by closing on patch data) or pass the free (unary) one for
 further processing.
 
-`fold : state -> Observable Functor s -> Observable s`
+`calculateState : state -> Observable Functor s -> Observable s`
 
 runs the emitted functor against current state and emits the result.
 
@@ -143,6 +196,8 @@ Please note that 'functor' is used to describe the 'map' function
 of CT functor rather than container itself as it is always used in a
 context of observable mapping.
 
-#### History api / time travelling
+### Incoming
 
-Incoming.
+*   History api / time travelling
+
+*   Snapshots

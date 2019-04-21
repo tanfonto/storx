@@ -1,6 +1,5 @@
 import { ReplaySubject } from 'rxjs';
 import { head, len } from '../utils';
-import { ActionPayload, ActionRecord } from './types';
 
 const template = (src: object) =>
   Object.assign({ args: null, functor: null }, src);
