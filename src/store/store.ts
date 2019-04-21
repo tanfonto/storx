@@ -1,5 +1,4 @@
 import { map, tap } from 'rxjs/operators';
-import { Effect } from '../../types';
 import { doEffects } from './do-effects';
 import { fold } from './fold';
 import { of } from './of';

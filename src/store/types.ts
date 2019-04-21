@@ -1,5 +1,3 @@
-import { BiFunctor, Dictionary, EntryOf, Functor } from '../../types';
-
 export type StoreConfig<T, U> = Dictionary<BiFunctor<T, U>>;
 export type ActionEntry<T, U> = EntryOf<Dictionary<BiFunctor<T, U>>, U>;
 export type ActionPayload<S, P> = [Functor<S>] | ActionEntry<S, P>;

@@ -1,5 +1,3 @@
-import { Effect } from '../../types';
-
 export const tap = <R, Args extends any[] = any[]>(
   fn: (...args: any[]) => R,
   eff: Effect<R>

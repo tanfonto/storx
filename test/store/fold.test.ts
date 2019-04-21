@@ -1,6 +1,5 @@
 import { ReplaySubject, Subject } from 'rxjs';
 import { fold } from '../../src/store';
-import { Functor } from '../../types';
 import { onEmit } from '../on-emit';
 
 interface Box {

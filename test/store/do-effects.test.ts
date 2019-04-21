@@ -1,5 +1,4 @@
 import { doEffects } from '../../src/store/do-effects';
-import { Effect } from '../../types';
 
 test('does not fail when no effects are defined', () => {
   doEffects()();
