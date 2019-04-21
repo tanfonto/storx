@@ -145,7 +145,7 @@ more or less -  unlimited power, some ideas follow:
 [combination](https://www.learnrxjs.io/operators/combination/)
 operators;
 
-*   Subsetting your state for particular listeners (aks `selectors` or
+*   Subsetting your state for particular listeners (aka `selectors` or
 `view-models`) with
 [transformation](https://www.learnrxjs.io/operators/transformation/)
 operators, i.e.
