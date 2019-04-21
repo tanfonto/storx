@@ -22,16 +22,16 @@ Centralised state management powered by
 
 ### Features
 
--   small and concise;
+*   small and concise;
 
--   dependency-free (minus RxJS, obviously);
+*   dependency-free (minus RxJS, obviously);
 
--   dead simple api (see 'usage' below and tests);
+*   dead simple api (see 'usage' below and tests);
 
--   RxJS compatible, meaning you can plug it into your streams right
+*   RxJS compatible, meaning you can plug it into your streams right
     away;
 
--   functional, statically typed codebase;
+*   functional, statically typed codebase;
 
 
 ### Installation
@@ -151,7 +151,8 @@ operators;
 [transformation](https://www.learnrxjs.io/operators/transformation/)
 operators, i.e.
 [map](https://www.learnrxjs.io/operators/transformation/map.html),
-[pluck](https://www.learnrxjs.io/operators/transformation/pluck.html)
+[pluck](https://www.learnrxjs.io/operators/transformation/pluck.html);
+
 *   Fine-grained performance optimizations with
 with
 [distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html/), [audit](https://www.learnrxjs.io/operators/filtering/audit.html), [debounce](https://www.learnrxjs.io/operators/filtering/debounce.html) and others;  
@@ -202,4 +203,5 @@ context of observable mapping.
 #### Incoming
 
 *   History api / time travelling
+
 *   Snapshots
