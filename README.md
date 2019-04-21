@@ -118,7 +118,7 @@ state.subscribe(console.log);
 
 ### Core concepts
 
-##### actions
+#### actions
 
 In contrast to popular state management libraries, `Storx` actions
 represent actual transformations rather then intents or descriptors.
@@ -130,13 +130,13 @@ serve as a lightweight
 wrapper and RxJS pipeline rather than custom state management
 implementation.
 
-##### state calculation
+#### state calculation
 
 Because of how `Storx` defines actions it does not need an
 explicit `reducer` layer. Whatever gets dispatched to the store will
 implicitly transform the state and emit the result to subscribers.
 
-##### listening to state changes
+#### listening to state changes
 
 Because `Store` instance is an RxJS observable its only limited to RxJS
 pipeline functionality, meaning more or less - unlimited power, some
@@ -158,7 +158,7 @@ with
 [distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html/), [audit](https://www.learnrxjs.io/operators/filtering/audit.html), [debounce](https://www.learnrxjs.io/operators/filtering/debounce.html) and others;  
 
 
-#### Building blocks & composition
+### Building blocks & composition
 
 `of : () s p -> SubjectLike ActionRecord s p`
 
@@ -200,7 +200,7 @@ of CT functor rather than container itself as it is always used in a
 context of observable mapping.
 
 
-#### Incoming
+### Incoming
 
 *   History api / time travelling
 
