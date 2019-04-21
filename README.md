@@ -33,7 +33,6 @@ Centralised state management powered by
 
 *   functional, statically typed codebase;
 
-
 ### Installation
 
 ```
@@ -156,7 +155,6 @@ operators, i.e.
 *   Fine-grained performance optimizations with
 with
 [distinctUntilChanged](https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html/), [audit](https://www.learnrxjs.io/operators/filtering/audit.html), [debounce](https://www.learnrxjs.io/operators/filtering/debounce.html) and others;  
-
 
 ### Building blocks & composition
 
