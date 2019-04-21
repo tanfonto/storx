@@ -5,6 +5,6 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./store"));
 __export(require("./of"));
-__export(require("./do-effects"));
-__export(require("./select"));
-__export(require("./fold"));
+__export(require("./run-effects"));
+__export(require("./find-action"));
+__export(require("./calculate-state"));

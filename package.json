@@ -1,6 +1,6 @@
 {
   "name": "@tanfonto/storx",
-  "version": "1.2.3",
+  "version": "1.3.1",
   "description": "Flexible, centralised state management built with RxJS",
   "keywords": [
     "state management",
@@ -18,9 +18,15 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "tslint -p tsconfig.json",
+<<<<<<< HEAD
     "test:dev": "nyc tsc && ava **/*.test.ts --verbose --fail-fast --reset-cache --tap | tap-diff",
     "test": "nyc ava-ts **/*.test.ts --fail-fast && nyc report --reporter=text-lcov | coveralls",
     "watch": "ava-ts --verbose --watch",
+=======
+    "test:dev": "jest --no-cache --colors test/**/*.test.ts -o -b --coverage",
+    "test": "jest test/**/*.test.ts -b --coverage --coverageReporters=text-lcov | coveralls",
+    "watch": "yarn test:dev --watch",
+>>>>>>> 45994cac3faea4e8d11c6370891673502f267d8a
     "build": "tsc"
   },
   "repository": {
@@ -30,12 +36,16 @@
   "author": "tanfonto",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^1.2.1",
-    "ava-ts": "^0.25.2",
+    "@types/jest": "^24.0.11",
     "coveralls": "^3.0.3",
+<<<<<<< HEAD
     "nyc": "^14.0.0",
+=======
+    "jest": "^24.7.1",
+>>>>>>> 45994cac3faea4e8d11c6370891673502f267d8a
     "rxjs": "^6.4.0",
     "tap-diff": "^0.1.1",
+    "ts-jest": "^24.0.2",
     "ts-node": "^7.0.1",
     "tslint": "^5.13.0",
     "typescript": "^3.3.3333"

@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "lib": ["es6"],
-  "compilerOptions": {
-    "noUnusedLocals": false,
-    "noUnusedParameters": false
-  },
-  "exclude": []
-}
