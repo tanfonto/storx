@@ -2,18 +2,19 @@ language: node_js
 node_js:
   - node
 install:
-  - npm ci
+  - yarn
 cache:
+  yarn: true
   directories:
     - node_modules
 jobs:
   include:
     - stage: lint
-      script: npm run lint
+      script: yarn lint
     - stage: test
-      script: npm test
+      script: yarn test
     - stage: build
-      script: npm run build
+      script: yarn build
       deploy:
         provider: npm
         email: tanfonto@pm.me
