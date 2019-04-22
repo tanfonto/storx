@@ -1,6 +1,6 @@
 declare type Dispatchable<S, P> = (state: S, patch: P) => S | ((state: S) => S);
 declare type ActionsConfig<S, P = any> = Dictionary<Dispatchable<S, P>>;
-declare type ActionEntry<S, P> = EntryOf<ActionsConfig<S, P>, P> | [ keyof ActionsConfig<S, P>];
+declare type ActionEntry<S, P, K = keyof ActionsConfig<S, P>> = [ K, P ] | [ K ];
 declare type ActionPayload<S, P> = [Functor<S>] | ActionEntry<S, P>;
 declare type ActionRecord<
   S,
