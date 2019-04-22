@@ -9,7 +9,7 @@ export function Store<S, P = S>(
   config: ActionsConfig<S, P>,
   ...effects: Array<Effect<S>>
 ) {
-  const { observable, next } = of<S, P>();
+  const { observable, next: dispatch } = of<S, P>();
   const state = observable.pipe(
     tap<ActionRecord<S, P>>(runEffects(...effects)),
     map(findAction(config)),
@@ -18,7 +18,7 @@ export function Store<S, P = S>(
 
   return {
     _history: observable,
-    dispatch: next,
+    dispatch,
     state
   };
 }

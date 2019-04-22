@@ -2,12 +2,15 @@ import { map, skip, tap } from 'rxjs/operators';
 import { Store } from '../../src/store';
 import { onEmit } from '../on-emit';
 
+type Effect<T> = (arg: T) => void;
+
 const testStore = (value: number, ...effects: Array<Effect<any>>) =>
   Store<{ value: number }>(
     { value },
     {
       dec: ({ value: v1 }, { value: v2 }) => ({ value: v1 - v2 }),
-      inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 })
+      inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 }),
+      incOne: ({ value: v1 }) => ({ value: v1 + 1 })
     },
     ...effects
   );
@@ -28,6 +31,14 @@ test('dispatching bound action updates complex state accordingly', done => {
   onEmit(done, state, { value: 4 });
 
   dispatch('inc', { value: 3 });
+});
+
+test('dispatching bound, unary action updates complex state accordingly', done => {
+  const { dispatch, state } = testStore(3);
+
+  onEmit(done, state, { value: 4 });
+
+  dispatch('incOne');
 });
 
 test('dispatching free action updates primitive state accordingly', done => {

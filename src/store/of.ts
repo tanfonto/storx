@@ -1,13 +1,13 @@
 import { ReplaySubject } from 'rxjs';
-import { head, len } from '../utils';
+import { head, isFunction } from '../utils';
 
 const template = (src: object) =>
   Object.assign({ args: null, Functor: null }, src);
 
-export const normalize = <S, P>(
+const normalize = <S, P>(
   args: ActionPayload<S, P>
 ): ActionRecord<S, P, ActionPayload<S, P>> =>
-  template(len(args) > 1 ? { args } : { Functor: head(args) }) as any;
+  template(isFunction(head(args)) ? { functor: head(args) } : { args }) as any;
 
 export const of = <S, P>() => {
   const src = new ReplaySubject<ActionRecord<S, P>>();
