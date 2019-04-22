@@ -1,4 +1,5 @@
 declare type Key = string | number;
+declare type Nilable<T> = T | undefined | null;
 declare type EntryOf<T0 = any, T1 = T0> = [keyof T0, T1];
 interface Dictionary<T> {
   [key: string]: T;

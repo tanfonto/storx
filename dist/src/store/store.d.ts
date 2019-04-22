@@ -1,11 +1,11 @@
-export declare function Store<S, P = S>(initialState: S, config: ActionsConfig<S, P>, ...effects: Array<Effect<S>>): {
+export declare function Store<S>(initialState: S, config: ActionsConfig<S>, ...effects: Array<Effect<S>>): {
     _history: import("rxjs").Observable<{
-        args: [string | number, P];
+        args: ActionEntry<S_1, any>;
         functor: null;
     } | {
         args: null;
         functor: Functor<S, S>;
     }>;
-    dispatch: (...args: ActionPayload<S, P>) => void;
+    dispatch: <P = any>(...args: ActionPayload<S, P>) => void;
     state: import("rxjs").Observable<S>;
 };

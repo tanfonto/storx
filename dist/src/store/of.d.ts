@@ -1,7 +1,7 @@
-export declare const of: <S, P>() => {
-    next: (...args: ActionPayload<S, P>) => void;
+export declare const of: <S>() => {
+    next: <P = any>(...args: ActionPayload<S, P>) => void;
     observable: import("rxjs").Observable<{
-        args: [string | number, P];
+        args: ActionEntry<S, any>;
         functor: null;
     } | {
         args: null;

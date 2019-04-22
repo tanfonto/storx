@@ -21,7 +21,7 @@
     "listEmittedFiles": true,
     "pretty": true,
     "diagnostics": true,
-    "typeRoots": ["@types"]
+    "typeRoots": ["node_modules/@types", "@types"]
   },
   "exclude": ["dist", "test/**/*"]
 }

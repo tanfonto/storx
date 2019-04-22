@@ -2,8 +2,6 @@ import { map, skip, tap } from 'rxjs/operators';
 import { Store } from '../../src/store';
 import { onEmit } from '../on-emit';
 
-type Effect<T> = (arg: T) => void;
-
 const testStore = (value: number, ...effects: Array<Effect<any>>) =>
   Store<{ value: number }>(
     { value },
