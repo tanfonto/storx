@@ -1,7 +1,7 @@
-export declare function findAction<S, P>(config: StoreConfig<S, P>): ({ args, functor }: {
-    args: null;
-    functor: Functor<S, S>;
-} | {
+export declare function findAction<S, P>(config: ActionsConfig<S, P>): ({ args, Functor }: {
     args: [string | number, P];
-    functor: null;
+    Functor: null;
+} | {
+    args: null;
+    Functor: Functor<S, S>;
 }) => Functor<S, S>;

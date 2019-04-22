@@ -1,10 +1,10 @@
-declare type StoreConfig<T, U> = Dictionary<BiFunctor<T, U>>;
-declare type ActionEntry<T, U> = EntryOf<Dictionary<BiFunctor<T, U>>, U>;
+declare type ActionsConfig<S, P> = Dictionary<((state: S, patch: P) => S)>;
+declare type ActionEntry<S, P> = EntryOf<ActionsConfig<S, P>, P>;
 declare type ActionPayload<S, P> = [Functor<S>] | ActionEntry<S, P>;
 declare type ActionRecord<
   S,
   P,
   T extends ActionPayload<S, P> = ActionPayload<S, P>
 > = T extends ActionEntry<S, P>
-  ? { args: null; functor: Functor<S> }
-  : { args: ActionEntry<S, P>; functor: null };
+  ? { args: ActionEntry<S, P>; Functor: null }
+  : { args: null; Functor: Functor<S> };

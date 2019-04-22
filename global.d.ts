@@ -4,7 +4,6 @@ declare interface Dictionary<T> {
   [key: string]: T;
   [key: number]: T;
 }
-declare type Functor<T = any, R = T> = (left: T) => R;
-declare type BiFunctor<T, P = T, R = T> = (...args: [T, P]) => R;
+declare type Functor<T = any, R = T> = (arg: T) => R;
 declare type Pred<T = any> = Functor<T, boolean>;
 declare type Effect<T = any> = (state: T) => void;

@@ -138,7 +138,7 @@ implicitly transform the state and emit the result to subscribers.
 #### listening to state changes
 
 Given `Store` instance is an RxJS observable the only functional
-limatation  to its streaming capabilities is RxJS api pipeline, meaning
+limitation  to its streaming capabilities is RxJS api pipeline, meaning
 more or less -  unlimited power, some ideas follow:
 
 *   Streamlining your store emissions with external sources using

@@ -6,7 +6,7 @@ import { runEffects } from './run-effects';
 
 export function Store<S, P = S>(
   initialState: S,
-  config: StoreConfig<S, P>,
+  config: ActionsConfig<S, P>,
   ...effects: Array<Effect<S>>
 ) {
   const { observable, next } = of<S, P>();
