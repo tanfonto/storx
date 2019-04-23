@@ -21,7 +21,7 @@
     "test:dev": "jest --no-cache --colors test/**/*.test.ts -o -b --coverage",
     "test": "jest test/**/*.test.ts -b --coverage --coverageReporters=text-lcov | coveralls",
     "watch": "yarn test:dev --watch",
-    "build": "tsc"
+    "build": "tsc -p tsconfig.dist.json"
   },
   "repository": {
     "url": "https://github.com/tanfonto/storx"

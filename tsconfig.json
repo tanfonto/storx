@@ -23,5 +23,5 @@
     "diagnostics": true,
     "typeRoots": ["node_modules/@types", "@types"]
   },
-  "exclude": ["dist", "test/**/*"]
+  "exclude": ["dist"]
 }

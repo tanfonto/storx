@@ -1,6 +1,6 @@
 export declare function Store<S>(initialState: S, config: ActionsConfig<S>, ...effects: Array<Effect<S>>): {
     _history: import("rxjs").Observable<{
-        args: ActionEntry<S_1, any>;
+        args: ActionEntry<S_1, any, string | number>;
         functor: null;
     } | {
         args: null;
