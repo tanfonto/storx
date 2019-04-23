@@ -1,4 +1,4 @@
-import { isNil, isFunction } from '../../src/utils/type-assertions';
+import { isFunction, isNil } from '../../src/utils/type-assertions';
 
 test('isNil is true if fed with null', () => {
   const actual = isNil(null);

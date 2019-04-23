@@ -6,10 +6,10 @@ const testStore = (value: number, ...effects: Array<Effect<any>>) =>
   Store<{ value: number }>(
     { value },
     {
+      adaptThenInc: ({ value: v1 }, { other: v2 }) => ({ value: v1 + v2 }),
       dec: ({ value: v1 }, { value: v2 }) => ({ value: v1 - v2 }),
       inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 }),
-      incOne: ({ value: v1 }) => ({ value: v1 + 1 }),
-      adaptThenInc: ({ value: v1 }, { other: v2 }) => ({ value: v1 + v2 })
+      incOne: ({ value: v1 }) => ({ value: v1 + 1 })
     },
     ...effects
   );
