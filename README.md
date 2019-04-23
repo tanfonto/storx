@@ -138,7 +138,7 @@ implicitly transform the state and emit the result to subscribers.
 #### listening to state changes
 
 Given `Store` instance is an RxJS observable the only functional
-limatation  to its streaming capabilities is RxJS api pipeline, meaning
+limitation  to its streaming capabilities is RxJS api pipeline, meaning
 more or less -  unlimited power, some ideas follow:
 
 *   Streamlining your store emissions with external sources using
@@ -158,7 +158,7 @@ with
 
 ### Building blocks and composition
 
-`of : () s p -> SubjectLike ActionRecord s p`
+`of s: Functor s -> SubjectLike ActionRecord`
 
 Constructor. creates a (private) instance of ReplaySubject and returns
 it converted to Observable extended with custom `next` function that may
@@ -166,16 +166,16 @@ take one of two forms:
 
 ```
 - Functor s -> void
-- (key, payload) -> void
+- (key, payload) p -> void
 ```
 
-`runEffects : [ (ActionRecord s p -> void) ] -> void`
+`runEffects s: [ (ActionRecord s -> void) ] -> void`
 
 fires a list of unary functions with a tuple of (key,
 payload) representing action name and patch data as their first and only
 argument.
 
-```findAction : Config s p -> ActionRecord s p -> (Functor s | (p -> Functor s))```
+```findAction s: Config s -> ActionRecord s -> Functor s```
 
 given configuration object, keys of which represent actions names and
 values describing binary functions of (state, patch) and argument being
@@ -184,7 +184,7 @@ these 2 forms was used and either shorten a binary functor to curried
 unary version (by closing on patch data) or pass the free (unary) one for
 further processing.
 
-`calculateState : state -> Observable Functor s -> Observable s`
+`calculateState s: s -> Observable Functor s -> Observable s`
 
 runs the emitted functor against current state and emits the result.
 

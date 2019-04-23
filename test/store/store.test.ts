@@ -6,8 +6,10 @@ const testStore = (value: number, ...effects: Array<Effect<any>>) =>
   Store<{ value: number }>(
     { value },
     {
+      adaptThenInc: ({ value: v1 }, { other: v2 }) => ({ value: v1 + v2 }),
       dec: ({ value: v1 }, { value: v2 }) => ({ value: v1 - v2 }),
-      inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 })
+      inc: ({ value: v1 }, { value: v2 }) => ({ value: v1 + v2 }),
+      incOne: ({ value: v1 }) => ({ value: v1 + 1 })
     },
     ...effects
   );
@@ -30,6 +32,22 @@ test('dispatching bound action updates complex state accordingly', done => {
   dispatch('inc', { value: 3 });
 });
 
+test('dispatching action bound to non-homogeneous payload updates complex state accordingly', done => {
+  const { dispatch, state } = testStore(1);
+
+  onEmit(done, state, { value: 4 });
+
+  dispatch('adaptThenInc', { other: 3 });
+});
+
+test('dispatching bound, unary action updates complex state accordingly', done => {
+  const { dispatch, state } = testStore(3);
+
+  onEmit(done, state, { value: 4 });
+
+  dispatch('incOne');
+});
+
 test('dispatching free action updates primitive state accordingly', done => {
   const { dispatch, state } = Store(42, {});
 
@@ -50,7 +68,10 @@ test('consequent changes are getting applied correctly', done => {
   const { dispatch, state } = testStore(42);
 
   state
-    .pipe(skip(2), map(s => expect(s).toEqual({ value: 60 })))
+    .pipe(
+      skip(2),
+      map(s => expect(s).toEqual({ value: 60 }))
+    )
     .subscribe(done);
 
   dispatch('inc', { value: 5 });

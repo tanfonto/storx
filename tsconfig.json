@@ -20,7 +20,8 @@
     "moduleResolution": "node",
     "listEmittedFiles": true,
     "pretty": true,
-    "diagnostics": true
+    "diagnostics": true,
+    "typeRoots": ["node_modules/@types", "@types"]
   },
-  "exclude": ["dist", "test/**/*"]
+  "exclude": ["dist"]
 }
