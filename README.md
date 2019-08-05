@@ -31,7 +31,7 @@ composition`](#Building-blocks-and-composition)
 *   RxJS compatible, meaning you can plug it into your streams right
     away;
 
-*   functional, statically typed codebase;
+*   Light-functional, statically typed codebase;
 
 ### Installation
 
